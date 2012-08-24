@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="5cf5a35d-e8c8-4684-a183-b8e929b89f87" solutionId="5cf5a35d-e8c8-4684-a183-b8e929b89f87" resetWebServer="false" title="Unity for SharePoint 0.1" name="Unity.SharePoint" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <customAssembly location="Microsoft.Practices.Unity.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll" />
+    <customAssembly location="Microsoft.Practices.Unity.Configuration.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll" />
+    <customAssembly location="Microsoft.Practices.ServiceLocation.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll" />
+    <projectOutputAssembly location="Unity.SharePoint.Configuration.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\Unity.SharePoint.Configuration\Unity.SharePoint.Configuration.csproj" />
+  </assemblies>
+  <features>
+    <featureReference itemId="05264584-4356-4291-bbaa-45cb01ac5c23" />
+  </features>
+</package>
