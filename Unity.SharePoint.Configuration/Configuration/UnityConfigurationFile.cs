@@ -6,6 +6,9 @@ namespace Unity.SharePoint.Configuration
 {
     public class UnityConfigurationFile : SPAutoSerializingObject
     {
+
+        public static readonly string SpRoot = "SPROOT:";
+
         [Persisted]
         private string _name;
 
@@ -13,7 +16,6 @@ namespace Unity.SharePoint.Configuration
         private string _ds;
 
         [Persisted] private int _sequence;
-        private const string Sproot = "SPROOT:";
 
         public string DataSource { get { return _ds; } set { _ds = value; } }
 
@@ -32,8 +34,8 @@ namespace Unity.SharePoint.Configuration
         public virtual string MapSourcePath()
         {
             var file = DataSource;
-            if (file.StartsWith(Sproot, StringComparison.InvariantCultureIgnoreCase))
-                file = SPUtility.GetGenericSetupPath(file.Substring(Sproot.Length));
+            if (file.StartsWith(SpRoot, StringComparison.InvariantCultureIgnoreCase))
+                file = SPUtility.GetGenericSetupPath(file.Substring(SpRoot.Length));
 
             return file;
         }

@@ -2,7 +2,7 @@
 
 
 [assembly: AssemblyTitle("Unity.SharePoint")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Unity Application Block for SharePoint")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VisualOn GmbH")]
 [assembly: AssemblyProduct("Unity for SharePoint")]

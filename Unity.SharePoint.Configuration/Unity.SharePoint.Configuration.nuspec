@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>0.1.0.0</version>
+    <title>$title$</title>
+    <authors>Michael Kriese</authors>
+    <owners>VisualOn GmbH</owners>
+    <licenseUrl>http://unity.codeplex.com/license</licenseUrl>
+    <projectUrl>https://github.com/VisualOn/Unity.SharePoint</projectUrl>
+    <iconUrl>http://www.visualon.de/s/misc/favicon.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <tags>DI</tags>
+  </metadata>
+</package>

@@ -70,6 +70,7 @@
   <ItemGroup>
     <None Include="key.snk" />
     <None Include="packages.config" />
+    <None Include="Unity.SharePoint.Configuration.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
