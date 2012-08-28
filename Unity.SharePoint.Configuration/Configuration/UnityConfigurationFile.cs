@@ -13,6 +13,7 @@ namespace Unity.SharePoint.Configuration
         private string _ds;
 
         [Persisted] private int _sequence;
+        private const string Sproot = "SPROOT:";
 
         public string DataSource { get { return _ds; } set { _ds = value; } }
 
@@ -31,8 +32,8 @@ namespace Unity.SharePoint.Configuration
         public virtual string MapSourcePath()
         {
             var file = DataSource;
-            if (file.StartsWith("SPROOT:", StringComparison.InvariantCultureIgnoreCase))
-                file = SPUtility.GetGenericSetupPath(file.Substring(7));
+            if (file.StartsWith(Sproot, StringComparison.InvariantCultureIgnoreCase))
+                file = SPUtility.GetGenericSetupPath(file.Substring(Sproot.Length));
 
             return file;
         }

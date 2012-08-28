@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 using Microsoft.SharePoint.Administration;
-using Microsoft.SharePoint.Utilities;
 
 namespace Unity.SharePoint.Configuration
 {
@@ -95,14 +94,10 @@ namespace Unity.SharePoint.Configuration
 
         public void Configure(IUnityContainer container)
         {
-            foreach (var file in _sections.OrderBy(s => s.Sequence).ThenBy(s => s.Name).Select(section => section.MapSourcePath() ?? string.Empty))
+            foreach (var sec in _sections.OrderBy(s => s.Sequence).ThenBy(s => s.Name).Select(section => section.MapSourcePath())
+                .Select(ConfigurationManager.OpenExeConfiguration).Select(cfg => cfg.GetSection("unity")).OfType<UnityConfigurationSection>())
             {
-                var cfg = ConfigurationManager.OpenExeConfiguration(file);
-
-                var sec = cfg.GetSection("unity") as Microsoft.Practices.Unity.Configuration.UnityConfigurationSection;
-
-                if (sec != null)
-                    sec.Configure(container);
+                sec.Configure(container);
             }
         }
 
