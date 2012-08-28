@@ -23,6 +23,9 @@ namespace Unity.SharePoint.Features.WebApp
             var wap = properties.Feature.Parent as SPWebApplication;
             if (wap == null)
                 throw new ArgumentException("Missing parent SPWebApplication!", "properties");
+
+            wap.CreateUnityConfig();
+
             // add the ihttpmodule
             wap.WebConfigModifications.Insert(0, Mod);
 
@@ -42,6 +45,8 @@ namespace Unity.SharePoint.Features.WebApp
             if (wap == null)
                 throw new ArgumentException("Missing parent SPWebApplication!", "properties");
 
+
+            wap.DeleteUnityConfig();
             
             // remove the ihttpmodule
             foreach (var mod in wap.WebConfigModifications.Where(mod => mod.Owner == Mod.Owner && mod.Name == Mod.Name))
@@ -60,26 +65,26 @@ namespace Unity.SharePoint.Features.WebApp
 
         // Uncomment the method below to handle the event raised after a feature has been installed.
 
-        public override void FeatureInstalled(SPFeatureReceiverProperties properties)
-        {
-            var wap = properties.Feature.Parent as SPWebApplication;
-            if (wap == null)
-                throw new ArgumentException("Missing parent SPWebApplication!", "properties");
+        //public override void FeatureInstalled(SPFeatureReceiverProperties properties)
+        //{
+        //    var wap = properties.Feature.Parent as SPWebApplication;
+        //    if (wap == null)
+        //        throw new ArgumentException("Missing parent SPWebApplication!", "properties");
 
-            wap.CreateUnityConfig();
-        }
+        //    wap.CreateUnityConfig();
+        //}
 
 
         // Uncomment the method below to handle the event raised before a feature is uninstalled.
 
-        public override void FeatureUninstalling(SPFeatureReceiverProperties properties)
-        {
-            var wap = properties.Feature.Parent as SPWebApplication;
-            if (wap == null)
-                throw new ArgumentException("Missing parent SPWebApplication!", "properties");
+        //public override void FeatureUninstalling(SPFeatureReceiverProperties properties)
+        //{
+        //    var wap = properties.Feature.Parent as SPWebApplication;
+        //    if (wap == null)
+        //        throw new ArgumentException("Missing parent SPWebApplication!", "properties");
 
-            wap.DeleteUnityConfig();
-        }
+        //    wap.DeleteUnityConfig();
+        //}
 
         // Uncomment the method below to handle the event raised when a feature is upgrading.
 
@@ -92,7 +97,7 @@ namespace Unity.SharePoint.Features.WebApp
             Type = typeof(UnityHttpHandler).AssemblyQualifiedName;
             Mod = new SPWebConfigModification
                 {
-                    Path = "configuration/system.web/httpModules",
+                    Path = "configuration/system.webServer/modules",
                     Name = String.Format("add[@name='{0}'][@type='{1}']", Name, Type),
                     Sequence = 0,
                     Owner = Name,
