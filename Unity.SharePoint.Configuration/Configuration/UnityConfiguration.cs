@@ -103,7 +103,7 @@ namespace Unity.SharePoint.Configuration
 
         public static IUnityConfiguration Create(SPWebApplication wap)
         {
-            var res = wap.GetChild<UnityConfiguration>();
+            var res = wap.GetChild<UnityConfiguration>(Key);
             if (res == null)
             {
                 res = new UnityConfiguration(wap);

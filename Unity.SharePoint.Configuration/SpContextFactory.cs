@@ -19,17 +19,22 @@ namespace Unity.SharePoint
         {
             var wap = SPWebApplication.Lookup(uri);
 
-            return wap.GetChild<UnityConfiguration>();
+            return wap.GetChild<UnityConfiguration>(UnityConfiguration.Key);
+        }
+
+        public static IUnityConfiguration GetUnityConfig(this SPWebApplication wap)
+        {
+            return wap.GetChild<UnityConfiguration>(UnityConfiguration.Key);
         }
 
         public static IUnityConfiguration CreateUnityConfig(this SPWebApplication wap)
         {
-            return wap.GetChild<UnityConfiguration>() ?? UnityConfiguration.Create(wap);
+            return wap.GetChild<UnityConfiguration>(UnityConfiguration.Key) ?? UnityConfiguration.Create(wap);
         }
 
         public static void DeleteUnityConfig(this SPWebApplication wap)
         {
-            var cfg = wap.GetChild<UnityConfiguration>();
+            var cfg = wap.GetChild<UnityConfiguration>(UnityConfiguration.Key);
 
             if (cfg != null)
             {
